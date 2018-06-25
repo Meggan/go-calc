@@ -57,17 +57,17 @@ func menu() {
 
 	case '3':
 		fmt.Println("Multiply")
-		// multiply()
+		multiply()
 		break
 
 	case '4':
 		fmt.Println("Divide")
-		// divide()
+		divide()
 		break
 
 	case '5':
 		fmt.Println("Remainder")
-		// remainder()
+		remainder()
 		break
 
 	case '6':
@@ -88,6 +88,62 @@ func menu() {
 
 func add() {
 
+	var x float64
+	var y float64
+
+	fmt.Println("First Number: ")
+	fmt.Scan(&x)
+
+	fmt.Println("Second Number: ")
+	fmt.Scan(&y)
+	fmt.Println()
+	fmt.Printf("Sum : %f\n\n\n", x+y)
+}
+
+func subtract() {
+
+	var x float64
+	var y float64
+
+	fmt.Println("First Number: ")
+	fmt.Scan(&x)
+
+	fmt.Println("Second Number: ")
+	fmt.Scan(&y)
+	fmt.Println()
+	fmt.Printf("Result : %f\n\n\n", x-y)
+}
+
+func multiply() {
+
+	var x float64
+	var y float64
+
+	fmt.Println("First Number: ")
+	fmt.Scan(&x)
+
+	fmt.Println("Second Number: ")
+	fmt.Scan(&y)
+	fmt.Println()
+	fmt.Printf("Result : %f\n\n\n", x*y)
+}
+
+func divide() {
+
+	var x float64
+	var y float64
+
+	fmt.Println("First Number: ")
+	fmt.Scan(&x)
+
+	fmt.Println("Second Number: ")
+	fmt.Scan(&y)
+	fmt.Println()
+	fmt.Printf("Division : %f\n\n\n", x/y)
+}
+
+func remainder() {
+
 	var x int
 	var y int
 
@@ -97,10 +153,24 @@ func add() {
 	fmt.Println("Second Number: ")
 	fmt.Scan(&y)
 	fmt.Println()
-	fmt.Printf("Sum : %d\n\n\n", x+y)
+	fmt.Printf("Remainder : %d\n\n\n", x%y)
 }
 
-func subtract() {
+func standardDeviation() {
+
+	var x int
+	var y int
+
+	fmt.Println("First Number: ")
+	fmt.Scan(&x)
+
+	fmt.Println("Second Number: ")
+	fmt.Scan(&y)
+	fmt.Println()
+	fmt.Printf("Sum : %d\n\n\n", x-y)
+}
+
+func mmm() {
 
 	var x int
 	var y int
