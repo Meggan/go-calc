@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+
+	"gonum.org/v1/gonum/stat"
 )
 
 func main() {
@@ -26,13 +28,13 @@ func menu() {
 	fmt.Println("   .----------------------------------------------------------.")
 	fmt.Println("   | (╯°□ °）╯︵ ┻━┻ Meggu's Menu__̴ı̴̴̡̡̡ ̡͌l̡̡̡ ̡͌l̡*̡̡ ̴̡ı̴̴̡ ̡̡͡|̲̲̲͡͡͡ ̲▫̲͡ ̲̲̲͡͡π̲̲͡͡ ̲̲͡▫̲̲͡͡ ̲|̡̡̡ ̡ ̴̡ı̴̡̡ ̡͌l̡̡̡̡.___|")
 	fmt.Println("   '----------------------------------------------------------|")
-	fmt.Println("   ' 1 Add ⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
+	fmt.Println("   ' 1  Add -⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
 	fmt.Println("   ' 2. Subtract ⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
 	fmt.Println("   ' 3. Multiply ⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
 	fmt.Println("   ' 4. Divide ⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
 	fmt.Println("   ' 5. Remainder -⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
 	fmt.Println("   ' 6. Standard Deviation ⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
-	fmt.Println("   ' 7. Mean, Median, Mode ⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
+	fmt.Println("   ' 7. Variance ⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
 	fmt.Println("   ' 8. Exit ⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆-⋆|")
 	fmt.Println("   '----------------------------------------------------------'")
 
@@ -56,28 +58,23 @@ func menu() {
 		break
 
 	case '3':
-		fmt.Println("Multiply")
 		multiply()
 		break
 
 	case '4':
-		fmt.Println("Divide")
 		divide()
 		break
 
 	case '5':
-		fmt.Println("Remainder")
 		remainder()
 		break
 
 	case '6':
-		fmt.Println("Standard Deviation")
-		// standardDeviation()
+		standardDeviation()
 		break
 
 	case '7':
-		fmt.Println("Mean, Median, Mode")
-		// mmm()
+		variance()
 		break
 
 	case '8':
@@ -159,27 +156,46 @@ func remainder() {
 func standardDeviation() {
 
 	var x int
-	var y int
+	var y float64
+	i := 0
+	var sd []float64
 
-	fmt.Println("First Number: ")
+	fmt.Println("How Many Numbers: ")
 	fmt.Scan(&x)
 
-	fmt.Println("Second Number: ")
-	fmt.Scan(&y)
-	fmt.Println()
-	fmt.Printf("Sum : %d\n\n\n", x-y)
+	for i < x {
+
+		fmt.Println("Number: ")
+		fmt.Scan(&y)
+		fmt.Println()
+		sd = append(sd, y)
+		i++
+	}
+
+	stdev := stat.StdDev(sd, nil)
+	fmt.Printf("Standard Deviation: %.4f \n", stdev)
 }
 
-func mmm() {
+func variance() {
 
 	var x int
-	var y int
+	var y float64
+	i := 0
+	var va []float64
 
-	fmt.Println("First Number: ")
+	fmt.Println("How Many Numbers: ")
 	fmt.Scan(&x)
 
-	fmt.Println("Second Number: ")
-	fmt.Scan(&y)
-	fmt.Println()
-	fmt.Printf("Sum : %d\n\n\n", x-y)
+	for i < x {
+
+		fmt.Println("Number: ")
+		fmt.Scan(&y)
+		fmt.Println()
+		va = append(va, y)
+		i++
+	}
+
+	vari := stat.Variance(va, nil)
+	fmt.Printf("Variance: %.4f \n", vari)
+
 }
